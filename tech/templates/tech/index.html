@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ignis Tech Solution</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css_style/style.css'%}">
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <p class="heading">
+                Likes
+            </p>
+            {% for prod in allevent %}
+            <div class="eventbox">
+                {% for i in prod %}
+                <div class="content">
+                    <div class="image">
+                        <img src="/media/{{i.image}}" alt="img">
+                    </div>
+                    <div class="details">
+                        <p class="title">{{i.event_name}}</p>
+                        <p class="date_time">{{i.date}} {{i.time}}</p>
+                        <p class="price">Start at <span>₹999</span></p>
+                    </div>
+                    <div class="like-btn">
+                        <button class="btn" id="is_liked" name="is_liked">
+                            <img src="{% static 'img/1077035.png' %}" alt="btn" class="btn1" id="likebtn"
+                                onclick="colorChange()">
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+            <div class="postbtn">
+                <a href="/additem"><button class="btn-post">Post Now</button></a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const colorpattern = document.getElementById("likebtn");
+        var count = 0;
+
+        function colorChange() {
+            let x = 1;
+            if (x == 1) {
+                count = count + 1;
+            }
+            if (count == 1) {
+                colorpattern.src = "{% static 'img/833472.png' %}"
+            }
+            else if (count == 2) {
+                colorpattern.src = "{% static 'img/1077035.png' %}"
+                count = 0;
+            }
+        }
+    </script>
+</body>
+
+</html>
